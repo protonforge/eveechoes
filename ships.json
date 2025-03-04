@@ -1,0 +1,22 @@
+{
+  "ships": [
+    {
+      "name": "Marshal",
+      "faction": "CONCORD",
+      "class": "Battleship",
+      "baseStats": {
+        "hull": 25000,
+        "shield": 20000,
+        "capacitor": 6000,
+        "speed": 135,
+        "powergrid": 10000
+      },
+      "slots": {
+        "high": 8,
+        "mid": 6,
+        "low": 5,
+        "drone": 0
+      }
+    }
+  ]
+}
