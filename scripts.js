@@ -1,90 +1,36 @@
-const ship = {
-    name: "Marshal",
-    hull: 25000,
-    shield: 20000,
-    powergrid: 10000,
-    slots: {
-        high: 8,
-        mid: 6,
-        low: 5,
-        drone: 2
-    }
+// Sample ships.json data
+const ships = {
+  "marshal": {
+    "name": "Marshal",
+    "highSlots": [
+      { "name": "Weapon System 1" },
+      { "name": "Weapon System 2" },
+      { "name": "Weapon System 3" }
+    ]
+  }
 };
 
-const modules = [
-    { name: "Concord Large Pulse Laser", type: "Weapon", slotType: "High", powergrid: 2500, damage: 850 },
-    { name: "Gist X-Type Large Shield Booster", type: "Shield Booster", slotType: "Mid", powergrid: 500, shieldBoost: 1200 },
-    { name: "Republic Fleet Gyrostabilizer", type: "Damage Modifier", slotType: "Low", powergrid: 10, damageBonus: 1.1 },
-    { name: "Caldari Navy Wasp", type: "Drone", slotType: "Drone", damage: 500 }
-];
+// Function to render the high slots
+function renderHighSlots() {
+  const ship = ships.marshal; // Getting Marshal ship data
+  const highSlots = ship.highSlots; // Extracting high slot data
 
-let selectedSlot = null;
+  const fittingMenu = document.getElementById('fitting-menu');
+  const totalHighSlots = highSlots.length;
+  const angleStep = 45; // 45° per slot (to fit in the top quarter: 325° to 45°)
 
-// Initialize slots
-function createSlots() {
-    Object.keys(ship.slots).forEach(slotType => {
-        const container = document.getElementById(`${slotType}-slots`);
-        for (let i = 0; i < ship.slots[slotType]; i++) {
-            const slot = document.createElement("div");
-            slot.classList.add("slot");
-            slot.textContent = `${slotType} Slot`;
-            slot.dataset.slotType = slotType;
-            slot.onclick = () => openModuleSelection(slot);
-            container.appendChild(slot);
-        }
-    });
+  highSlots.forEach((slot, index) => {
+    const fittingItem = document.createElement('div');
+    fittingItem.classList.add('fitting-item');
+    fittingItem.style.transform = `rotate(calc(${angleStep * index}deg)) translateY(-130px)`;
+
+    const slotName = document.createElement('span');
+    slotName.textContent = slot.name;
+
+    fittingItem.appendChild(slotName);
+    fittingMenu.appendChild(fittingItem);
+  });
 }
 
-// Open module selection
-function openModuleSelection(slot) {
-    selectedSlot = slot;
-    document.getElementById("module-list").innerHTML = "";
-    
-    const slotType = slot.dataset.slotType;
-    const compatibleModules = modules.filter(m => m.slotType.toLowerCase() === slotType);
-
-    compatibleModules.forEach(module => {
-        const moduleDiv = document.createElement("div");
-        moduleDiv.classList.add("module");
-        moduleDiv.textContent = module.name;
-        moduleDiv.onclick = () => fitModule(module);
-        document.getElementById("module-list").appendChild(moduleDiv);
-    });
-
-    document.getElementById("module-selection").classList.remove("hidden");
-}
-
-// Fit module into slot
-function fitModule(module) {
-    if (!selectedSlot) return;
-
-    selectedSlot.textContent = module.name;
-    updateStats(module);
-
-    closeModuleSelection();
-}
-
-// Update ship stats
-function updateStats(module) {
-    if (module.shieldBoost) {
-        let shield = document.getElementById("shield");
-        shield.textContent = parseInt(shield.textContent) + module.shieldBoost;
-    }
-    
-    if (module.damage) {
-        let hull = document.getElementById("hull");
-        hull.textContent = parseInt(hull.textContent) + module.damage;
-    }
-    
-    if (module.powergrid) {
-        let powergrid = document.getElementById("powergrid");
-        powergrid.textContent = parseInt(powergrid.textContent) - module.powergrid;
-    }
-}
-
-// Close module selection
-function closeModuleSelection() {
-    document.getElementById("module-selection").classList.add("hidden");
-}
-
-createSlots();
+// Call the function to render high slots
+renderHighSlots();
