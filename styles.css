@@ -46,8 +46,16 @@ body {
   transform-origin: center bottom;
   transform: translateY(-130px);
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fitting-item:hover {
+  transform: translateY(-150px);
 }
 
 .fitting-item span {
