@@ -5,7 +5,8 @@ const ships = {
     "highSlots": [
       { "name": "Weapon System 1" },
       { "name": "Weapon System 2" },
-      { "name": "Weapon System 3" }
+      { "name": "Weapon System 3" },
+      { "name": "Weapon System 4" }
     ]
   }
 };
@@ -22,7 +23,10 @@ function renderHighSlots() {
   highSlots.forEach((slot, index) => {
     const fittingItem = document.createElement('div');
     fittingItem.classList.add('fitting-item');
-    fittingItem.style.transform = `rotate(calc(${angleStep * index}deg)) translateY(-130px)`;
+    
+    // Calculate the rotation angle for each item
+    const angle = 325 + angleStep * index;
+    fittingItem.style.transform = `rotate(${angle}deg) translateY(-130px)`;
 
     const slotName = document.createElement('span');
     slotName.textContent = slot.name;
