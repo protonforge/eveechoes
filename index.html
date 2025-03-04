@@ -1,3 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eve Echoes Fitting Simulator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { display: flex; gap: 20px; }
+        .ship-panel, .module-panel { border: 1px solid #ccc; padding: 10px; width: 300px; }
+        .slots { display: flex; flex-direction: column; gap: 5px; }
+        .slot { border: 1px dashed #666; padding: 10px; min-height: 30px; cursor: pointer; }
+        .module { padding: 5px; background: #ddd; cursor: grab; }
+    </style>
+</head>
 <body>
-  a
+    <h1>Eve Echoes Fitting Simulator</h1>
+    <div class="container">
+        <div class="ship-panel">
+            <h2>Marshal</h2>
+            <h3>Slots</h3>
+            <div class="slots">
+                <div class="slot" data-slot="High">High Slot</div>
+                <div class="slot" data-slot="Mid">Mid Slot</div>
+                <div class="slot" data-slot="Low">Low Slot</div>
+                <div class="slot" data-slot="Drone">Drone Bay</div>
+            </div>
+        </div>
+        <div class="module-panel">
+            <h2>Modules</h2>
+            <div class="module" draggable="true" data-type="Weapon" data-slot="High">Concord Large Pulse Laser</div>
+            <div class="module" draggable="true" data-type="Shield Booster" data-slot="Mid">Gist X-Type Large Shield Booster</div>
+            <div class="module" draggable="true" data-type="Damage Modifier" data-slot="Low">Republic Fleet Gyrostabilizer</div>
+            <div class="module" draggable="true" data-type="Drone" data-slot="Drone">Caldari Navy Wasp</div>
+        </div>
+    </div>
+    <script>
+        const slots = document.querySelectorAll('.slot');
+        const modules = document.querySelectorAll('.module');
+
+        modules.forEach(module => {
+            module.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', JSON.stringify({
+                    name: module.textContent,
+                    type: module.dataset.type,
+                    slot: module.dataset.slot
+                }));
+            });
+        });
+
+        slots.forEach(slot => {
+            slot.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+            slot.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+                if (slot.dataset.slot === data.slot) {
+                    slot.textContent = data.name;
+                } else {
+                    alert('This module cannot be fitted here!');
+                }
+            });
+        });
+    </script>
 </body>
+</html>
