@@ -31,8 +31,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,10 +44,15 @@ body {
   top: 0;
   left: 50%;
   transform-origin: center bottom;
-  transform: rotate(calc(60deg * var(--i))) translateY(-100px);
+  transform: translateY(-130px);
+  text-align: center;
   transition: transform 0.3s ease-in-out;
 }
 
 .fitting-item:hover {
-  transform: rotate(calc(60deg * var(--i))) translateY(-120px);
+  transform: translateY(-150px);
+}
+
+.fitting-item span {
+  display: block;
 }
