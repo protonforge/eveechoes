@@ -1,43 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eve Echoes Fitting Simulator</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ship Fitting Simulator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Eve Echoes Fitting Simulator</h1>
-    <div class="ship-container">
-        <h2>Marshal (CONCORD Battleship)</h2>
-        <div class="slots">
-            <h3>High Slots</h3>
-            <div class="slot-container" id="high-slots"></div>
-
-            <h3>Mid Slots</h3>
-            <div class="slot-container" id="mid-slots"></div>
-
-            <h3>Low Slots</h3>
-            <div class="slot-container" id="low-slots"></div>
-
-            <h3>Drone Slots</h3>
-            <div class="slot-container" id="drone-slots"></div>
-        </div>
+  <div class="container">
+    <div class="ship-image">
+      <img src="marshal.jpeg" alt="Ship Image">
     </div>
-
-    <div class="stats">
-        <h3>Ship Stats</h3>
-        <p>Hull: <span id="hull">25000</span></p>
-        <p>Shield: <span id="shield">20000</span></p>
-        <p>Powergrid: <span id="powergrid">10000</span></p>
+    <div class="fitting-menu">
+      <div class="fitting-item" style="--i:0;">Weapon</div>
+      <div class="fitting-item" style="--i:1;">Shield</div>
+      <div class="fitting-item" style="--i:2;">Engine</div>
+      <div class="fitting-item" style="--i:3;">Armor</div>
+      <div class="fitting-item" style="--i:4;">Drone</div>
+      <div class="fitting-item" style="--i:5;">Cargo</div>
     </div>
-
-    <div id="module-selection" class="hidden">
-        <h3>Select a Module</h3>
-        <div id="module-list"></div>
-        <button onclick="closeModuleSelection()">Cancel</button>
-    </div>
-
-    <script src="scripts.js"></script>
+  </div>
 </body>
 </html>
