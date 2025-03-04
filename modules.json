@@ -1,0 +1,39 @@
+{
+  "modules": [
+    {
+      "name": "Concord Large Pulse Laser",
+      "type": "Weapon",
+      "slotType": "High",
+      "size": "Large",
+      "powergrid": 2500,
+      "damage": 850,
+      "range": 20,
+      "rof": 4
+    },
+    {
+      "name": "Gist X-Type Large Shield Booster",
+      "type": "Shield Booster",
+      "slotType": "Mid",
+      "powergrid": 500,
+      "shieldBoost": 1200,
+      "activationCost": 300
+    },
+    {
+      "name": "Republic Fleet Gyrostabilizer",
+      "type": "Damage Modifier",
+      "slotType": "Low",
+      "powergrid": 10,
+      "damageBonus": 1.1,
+      "rofBonus": 0.9
+    },
+    {
+      "name": "Caldari Navy Wasp",
+      "type": "Drone",
+      "slotType": "Drone",
+      "size": "Large",
+      "damage": 500,
+      "speed": 1500,
+      "tracking": 0.8
+    }
+  ]
+}
