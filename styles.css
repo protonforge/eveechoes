@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.ship-container {
+    margin: 20px auto;
+    width: 60%;
+    padding: 20px;
+    background: #333;
+    border-radius: 10px;
+}
+
+.slot-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.slot {
+    width: 100px;
+    height: 40px;
+    background: gray;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.slot:hover {
+    background: lightgray;
+    color: black;
+}
+
+.stats {
+    margin-top: 20px;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+}
+
+#module-selection {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #444;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#module-selection.hidden {
+    display: none;
+}
+
+.module {
+    background: darkgray;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.module:hover {
+    background: lightgray;
+    color: black;
+}
